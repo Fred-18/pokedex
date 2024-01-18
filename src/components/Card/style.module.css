@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Gemunu+Libre:wght@300&display=swap");
+
+.cardWrapper {
+  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 4rem;
+  padding: 4rem;
+  margin: 0 auto;
+  width: max-content;
+}
+.cardGridSpace {
+  font-size: 3em;
+  margin-bottom: 1.2rem;
+  margin-left: 1rem;
+}
+
+.card {
+  font-family: Chakra Petch;
+  height: 20em;
+  width: 15em;
+  font-size: 10px;
+  color: black;
+  border-radius: 1em;
+  padding: 1em;
+  display: flex;
+  box-shadow: 0 0 5em -1em black;
+  border: 10px solid, #ccc;
+  text-decoration: none;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.image {
+  display: flex;
+  width: 100%;
+  height: 50%;
+  margin-right: 50px;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1285px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .cards-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .info {
+    justify-content: center;
+  }
+  .card-grid-space .num {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cards-wrapper {
+    padding: 4rem 2rem;
+  }
+  .card {
+    max-width: calc(100vw - 4rem);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .info {
+    display: block;
+    text-align: center;
+  }
+  .info h1 {
+    margin: 0;
+  }
+}
