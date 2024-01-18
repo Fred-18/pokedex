@@ -6,4 +6,9 @@ export class apiPokemon {
     const reponse = await axios.get(`${BASE_URL}/pokemon/generation/1`);
     return reponse.data;
   }
+
+  static async fetchTypes() {
+    const reponse = await axios.get(`${BASE_URL}/types`);
+    return reponse.data;
+  }
 }
