@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  border: solid black 1px;
+  border-radius: 20px;
+  max-width: 50px;
+  padding: 10px;
+  margin: 15px;
+  margin-left: 0;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
