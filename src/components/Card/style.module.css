@@ -21,8 +21,8 @@
   font-family: Chakra Petch;
   height: 20em;
   width: 15em;
-  font-size: 10px;
-  color: black;
+  font-size: 15px;
+  color:  	#21386E ;
   border-radius: 1em;
   padding: 1em;
   display: flex;
@@ -32,6 +32,8 @@
   overflow: hidden;
   flex-direction: column;
   justify-content: space-around;
+  background:#C7A008 ;
+  font-weight:bold;
 }
 .image {
   display: flex;

@@ -1,14 +1,19 @@
 import React from "react";
 import s from "./style.module.css";
-import { Card } from "../Card/Card";
-export const NavigationTypes = ({ typesList }) => {
+import { Button } from "../Button/Button";
+
+export const PokemonTypesList = ({ typesList, onClickItem }) => {
   return (
     <>
       <div className={s.container}>
         {typesList.map((pokemonTypesItems) => {
           return (
             <div key={pokemonTypesItems.id}>
-              <Card pokemonItem={pokemonTypesItems}/>
+              <Button
+                pokemonTypesItems={pokemonTypesItems}
+                img={pokemonTypesItems.image}
+                onClick={onClickItem}
+              />
             </div>
           );
         })}

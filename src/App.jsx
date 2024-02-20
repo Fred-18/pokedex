@@ -4,15 +4,19 @@ import "./global.css";
 import { apiPokemon } from "./api/pokemon-api";
 import { PokemonList } from "./components/PokemonLIst/PokemonList";
 import { Logo } from "./components/Logo/Logo";
-import { NavigationTypes } from "./components/NavigationTypes/NavigationTypes";
+import { PokemonTypesList } from "./components/PokemonTypesList/PokemonTypesList";
 import { Button } from "./components/Button/Button";
+/* import { Button } from "./components/Button/Button"; */
 //"//<a href="https://www.flaticon.com/fr/icones-gratuites/pokemon" title="pokémon icônes">Pokémon icônes créées par Nikita Golubev - Flaticon</a>
+
 export const App = () => {
   const [pokemonCollection, setPokemonCollection] = useState([]);
   const [pokemonCollectionTypes, setPokemonCollectionTypes] = useState([]);
+
   function test() {
-    alert("je clic");
+    console.log("je clic");
   }
+
   const fetchPokemon = async () => {
     try {
       const pokemon = await apiPokemon.fetchPokemon();
@@ -56,12 +60,14 @@ export const App = () => {
               <Logo />
             </div>
 
-            <div className={s.title}>title</div>
+            <div className={s.title}>Pokemon</div>
             <div>searchBar</div>
           </div>
         </div>
-        <Button onClickItem={test} />
-        <NavigationTypes typesList={pokemonCollectionTypes} />
+        <PokemonTypesList
+          onClickItem={test}
+          typesList={pokemonCollectionTypes}
+        />
         <PokemonList pokemonList={pokemonCollection} />
       </div>
     </>

@@ -1,3 +1,8 @@
+@font-face{
+    font-family: myfont;
+    src: url("../public/fonts/Pokemon\ Hollow.ttf");
+}
+
 .firstContainer{
     display: flex;
     flex-direction: column;
@@ -17,9 +22,12 @@
     display: flex;
     justify-content: space-around;
     width:90%;
-    background-color:black;
+    background-color: 	#1D2C5E ;
     color:white;
     padding: 10px;
     gap: 20px;
 
+}
+.title{
+    font-family: myfont;
 }
