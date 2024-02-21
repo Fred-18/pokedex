@@ -42,6 +42,17 @@
   margin-right: 50px;
 }
 
+.information{
+  display: flex;
+  align-items: center;
+  
+}
+s.informationChildren
+{
+  display: flex;
+  flex-direction: column;
+}
+
 /* MEDIA QUERIES */
 @media screen and (max-width: 1285px) {
   .cards-wrapper {

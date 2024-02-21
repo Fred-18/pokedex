@@ -7,6 +7,7 @@ export const PokemonTypesList = ({ typesList, onClickItem }) => {
     <>
       <div className={s.container}>
         {typesList.map((pokemonTypesItems) => {
+          console.log(pokemonTypesItems);
           return (
             <div key={pokemonTypesItems.id}>
               <Button

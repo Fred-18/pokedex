@@ -9,7 +9,12 @@ export const PokemonList = ({ pokemonList }) => {
           {pokemonList.map((pokemonItem) => {
             return (
               <div key={pokemonItem.id}>
-                <Card pokemonItem={pokemonItem} img={pokemonItem.image} />
+                <Card
+                  pokemonItem={pokemonItem}
+                  img={pokemonItem.image}
+                  type={pokemonItem.apiTypes[0]}
+                  stats={pokemonItem.stats}
+                />
               </div>
             );
           })}
