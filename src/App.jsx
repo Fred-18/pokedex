@@ -2,24 +2,19 @@ import React, { useEffect, useState } from "react";
 import s from "./style.module.css";
 import "./global.css";
 import { apiPokemon } from "./api/pokemon-api";
-import { PokemonList } from "./components/PokemonLIst/PokemonList";
+import { PokemonList } from "./components/PokemonList/PokemonList";
 import { Logo } from "./components/Logo/Logo";
 import { PokemonTypesList } from "./components/PokemonTypesList/PokemonTypesList";
-import { Button } from "./components/Button/Button";
-/* import { Button } from "./components/Button/Button"; */
 //"//<a href="https://www.flaticon.com/fr/icones-gratuites/pokemon" title="pokémon icônes">Pokémon icônes créées par Nikita Golubev - Flaticon</a>
 
 export const App = () => {
   const [pokemonCollection, setPokemonCollection] = useState([]);
   const [pokemonCollectionTypes, setPokemonCollectionTypes] = useState([]);
-
-  function test() {
-    console.log("je clic");
-  }
+  const [currentType, setCurrentType] = useState(null);
 
   const fetchPokemon = async () => {
     try {
-      const pokemon = await apiPokemon.fetchPokemon();
+      const pokemon = await apiPokemon.fetchPokemon(); // voir .then
       if (pokemon.length > 0) {
         setPokemonCollection(pokemon);
       }
@@ -40,17 +35,12 @@ export const App = () => {
       );
     }
   };
-
+  console.log(pokemonCollection, "***");
   useEffect(() => {
     fetchPokemon();
-  }, []);
-
-  useEffect(() => {
     fetchPokemonTypes();
   }, []);
 
-  console.log(pokemonCollection, "88");
-  console.log(pokemonCollectionTypes, "444");
   return (
     <>
       <div className={s.firstContainer}>
@@ -59,16 +49,20 @@ export const App = () => {
             <div>
               <Logo />
             </div>
-
-            <div className={s.title}>Pokemon</div>
+            <span className={s.titleStyle}>
+              <h1 className={s.title}>Pokedex</h1>
+            </span>
             <div>searchBar</div>
           </div>
         </div>
         <PokemonTypesList
-          onClickItem={test}
+          updateList={setCurrentType}
           typesList={pokemonCollectionTypes}
         />
-        <PokemonList pokemonList={pokemonCollection} />
+        <PokemonList
+          currentType={currentType}
+          pokemonList={pokemonCollection}
+        />
       </div>
     </>
   );
