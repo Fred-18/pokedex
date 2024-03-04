@@ -1,17 +1,13 @@
 import React from "react";
 import s from "./style.module.css";
-export const Card = ({ pokemonItem, type, stats }) => {
+export const Card = ({ pokemon, type, stats }) => {
   return (
     <>
       <div className={s.cardsWrapper}>
         <div className={s.cardGridSpace}></div>
         <div className={s.card}>
-          <h3>{pokemonItem.name}</h3>
-          <img
-            src={pokemonItem.image}
-            className={s.image}
-            alt={pokemonItem.name}
-          />
+          <h3>{pokemon.name}</h3>
+          <img src={pokemon.image} className={s.image} alt={pokemon.name} />
           <div className={s.information}>
             <div className={s.informationChildren}>
               <p>Type : {type.name}</p>
