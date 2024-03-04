@@ -2,18 +2,21 @@ import React from "react";
 import s from "./style.module.css";
 import { Button } from "../Button/Button";
 
-export const PokemonTypesList = ({ typesList, onClickItem }) => {
+export const PokemonTypesList = ({ typesList, updateList }) => {
+  const handleClick = (type) => {
+    updateList(type);
+  };
+
   return (
     <>
       <div className={s.container}>
         {typesList.map((pokemonTypesItems) => {
-          console.log(pokemonTypesItems);
           return (
             <div key={pokemonTypesItems.id}>
               <Button
                 pokemonTypesItems={pokemonTypesItems}
                 img={pokemonTypesItems.image}
-                onClick={onClickItem}
+                onClick={() => handleClick(pokemonTypesItems.name)}
               />
             </div>
           );
