@@ -11,4 +11,10 @@ export class apiPokemon {
     const reponse = await axios.get(`${BASE_URL}/types`);
     return reponse.data;
   }
+
+  static async fetchByName(pokemonName) {
+    const reponse = await axios.get(`${BASE_URL}/pokemon/${pokemonName}`);
+    console.log(reponse.data, "***");
+    return reponse.data;
+  }
 }

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import s from "./style.module.css";
 import "./global.css";
 import { apiPokemon } from "./api/pokemon-api";
 import { PokemonList } from "./components/PokemonList/PokemonList";
-import { Logo } from "./components/Logo/Logo";
 import { PokemonTypesList } from "./components/PokemonTypesList/PokemonTypesList";
+import { Header } from "./components/Header/Header";
+import { BigCard } from "./components/BigCard/BigCard";
+
 //"//<a href="https://www.flaticon.com/fr/icones-gratuites/pokemon" title="pokémon icônes">Pokémon icônes créées par Nikita Golubev - Flaticon</a>
 
 export const App = () => {
   const [pokemonCollection, setPokemonCollection] = useState([]);
   const [pokemonCollectionTypes, setPokemonCollectionTypes] = useState([]);
   const [currentType, setCurrentType] = useState(null);
+  const [currentName, setCurrentName] = useState(null);
 
   const fetchPokemon = async () => {
     try {
@@ -35,7 +37,16 @@ export const App = () => {
       );
     }
   };
-  console.log(pokemonCollection, "***");
+  const fetchPokemonByName = async (pokemonName) => {
+    try {
+      const NameResponse = await apiPokemon.fetchByName(pokemonName);
+      if (NameResponse.length > 0) {
+        setCurrentName(NameResponse);
+      }
+    } catch (error) {
+      alert("Erreur durant la recherche du pokemon dans pokedex");
+    }
+  };
   useEffect(() => {
     fetchPokemon();
     fetchPokemonTypes();
@@ -43,27 +54,19 @@ export const App = () => {
 
   return (
     <>
-      <div className={s.firstContainer}>
-        <div className={s.container}>
-          <div className={s.smallComtainer}>
-            <div>
-              <Logo />
-            </div>
-            <span className={s.titleStyle}>
-              <h1 className={s.title}>Pokedex</h1>
-            </span>
-            <div>searchBar</div>
-          </div>
-        </div>
-        <PokemonTypesList
-          updateList={setCurrentType}
-          typesList={pokemonCollectionTypes}
-        />
-        <PokemonList
-          currentType={currentType}
-          pokemonList={pokemonCollection}
-        />
-      </div>
+      <header>
+        <Header updatename={fetchPokemonByName} />
+      </header>
+      <PokemonTypesList
+        updateList={setCurrentType}
+        typesList={pokemonCollectionTypes}
+      />
+      <PokemonList
+        currentType={currentType}
+        pokemonList={pokemonCollection}
+        currentName={currentName}
+      />
+      <BigCard/>
     </>
   );
 };

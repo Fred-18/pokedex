@@ -1,0 +1,18 @@
+.container{
+    border: 2px solid black;
+}
+
+.box{
+    border: 1px solid black;
+    display: grid;
+    display: flex;
+    background-color: brown;
+}
+
+.info{
+    background-color: crimson;
+}
+
+.photo{
+    background-color: chartreuse;
+}

@@ -1,7 +1,8 @@
 import React from "react";
 import s from "./style.module.css";
 import { Card } from "../Card/Card";
-export const PokemonList = ({ pokemonList, currentType }) => {
+
+export const PokemonList = ({ pokemonList, currentType, currentName }) => {
   const simplifiedPokemonObject = pokemonList.map((pokemon) => {
     return {
       id: pokemon.id,
@@ -12,6 +13,8 @@ export const PokemonList = ({ pokemonList, currentType }) => {
       type: pokemon.apiTypes[0]
     };
   });
+  /*  const resultat = JSON.parse(simplifiedPokemonObject);
+  console.log(resultat, "***"); */ /* TEST  */
 
   // tester pour la prochaine fois mapper dans le simplifiedPokemonObject
   return (
@@ -37,7 +40,11 @@ export const PokemonList = ({ pokemonList, currentType }) => {
         <div className={s.container}>
           <div className={s.box}>
             {pokemonList.map((pokemon) => {
-              if (pokemon.apiTypes.some((type) => type.name === currentType))
+              if (
+                pokemon.apiTypes.some(
+                  (type) => type.name === currentType || pokemon === currentName
+                )
+              )
                 return (
                   <div key={pokemon.id}>
                     <Card
